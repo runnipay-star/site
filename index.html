@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>husiton-gadget</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --color-primary: #FF8A00;
+        --color-dark: #1a1a1a;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0.4; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .image-fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      /* Fix to prevent horizontal page shift on mobile when scrolling over the image gallery */
+      .swipe-container {
+        touch-action: pan-y;
+      }
+      @keyframes modal-bg-fade-in {
+        from { opacity: 0 } to { opacity: 1 }
+      }
+      .animate-modal-bg {
+        animation: modal-bg-fade-in 0.2s ease-out;
+      }
+      @keyframes modal-content-fade-in {
+        from { opacity: 0; transform: scale(0.95) }
+        to { opacity: 1; transform: scale(1) }
+      }
+      .animate-modal-content {
+        animation: modal-content-fade-in 0.2s ease-out;
+      }
+      
+      /* Animated Gradient Button Styles */
+      @keyframes animate {
+        0% { background-position: 0%; }
+        100% { background-position: 400%; }
+      }
+
+      .btn-animated-gradient {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        min-width: 200px;
+        height: 60px;
+        padding: 0 2rem;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-sizing: border-box;
+        background: linear-gradient(90deg, #4f46e5, #a855f7, #ec4899, #4f46e5);
+        background-size: 400%;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        z-index: 1;
+        transition: 0.5s;
+      }
+
+      .btn-animated-gradient:hover {
+        animation: animate 8s linear infinite;
+      }
+
+      .btn-animated-gradient:before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        bottom: -5px;
+        right: -5px;
+        left: -5px;
+        z-index: -1;
+        background: linear-gradient(90deg, #4f46e5, #a855f7, #ec4899, #4f46e5);
+        background-size: 400%;
+        border-radius: 40px;
+        filter: blur(20px);
+        opacity: 0;
+        transition: 0.5s;
+      }
+
+      .btn-animated-gradient:hover:before {
+        filter: blur(20px);
+        opacity: 1;
+        animation: animate 8s linear infinite;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'mango-orange': 'var(--color-primary)',
+              'mango-dark': 'var(--color-dark)',
+              'mango-light': '#f5f5f5',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.24.0",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.45.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
